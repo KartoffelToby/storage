@@ -1,6 +1,3 @@
-FROM ubuntu:16.04
-RUN apt-get update && \
-    apt-get install -y jq curl nfs-common netbase
-COPY storage /usr/bin/
+FROM rancher/storage-nfs:v0.9.0
 COPY nfs/rancher-nfs common/* /usr/bin/
 CMD ["start.sh", "storage", "--driver-name", "rancher-nfs"]
